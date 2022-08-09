@@ -150,7 +150,8 @@ def SS_lsim_innovation_form(A, B, C, D, K, y, u, x0='None'):
 def K_calc(A, C, Q, R, S):
     n_A = A[0, :].size
     try:
-        P, L, G = cnt.dare(A.T, C.T, Q, R, S, np.identity(n_A))
+        # P, L, G = cnt.dare(A.T, C.T, Q, R, S, np.identity(n_A))
+        P= np.empty([n_A, n_A])
         K = np.dot(np.dot(A, P), C.T) + S
         K = np.dot(K, np.linalg.inv(np.dot(np.dot(C, P), C.T) + R))
         Calculated = True
